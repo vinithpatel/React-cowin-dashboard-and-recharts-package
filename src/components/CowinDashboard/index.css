@@ -1,0 +1,30 @@
+.cowin-bg-container {
+  background-color: #161625;
+  min-height: 100vh;
+  padding: 30px;
+}
+.website-logo-card {
+  display: flex;
+  align-items: center;
+}
+.cowin-logo {
+  height: 50px;
+}
+.website-heading {
+  color: #2cc6c6;
+  font-family: 'Roboto';
+  margin-left: 10px;
+  font-size: 30px;
+}
+.logo-para {
+  font-family: 'Roboto';
+  font-size: 26px;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+.body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
