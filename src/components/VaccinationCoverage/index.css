@@ -1,1 +1,4 @@
-/* Write your CSS here */
+.chart-bg-container {
+  width: 100%;
+  border: 1px solid white;
+}

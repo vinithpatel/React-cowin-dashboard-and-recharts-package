@@ -28,3 +28,6 @@
   align-items: center;
   justify-content: center;
 }
+.charts-container {
+  width: 80%;
+}

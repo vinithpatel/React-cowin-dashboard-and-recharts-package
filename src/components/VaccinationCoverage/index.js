@@ -13,10 +13,8 @@ const VaccinationCoverage = props => {
   const {last7DaysVaccination} = props
 
   const DataFormatter = number => {
-    if (number > 1000) {
-      return `${(number / 1000).toString()}k`
-    }
-    return number.toString()
+    console.log(number)
+    return number
   }
 
   return (
@@ -29,13 +27,13 @@ const VaccinationCoverage = props => {
             tick={{stroke: 'gray', strokeWidth: 1}}
           />
           <YAxis
-            dataKey="vaccinated_people"
             tick={{stroke: 'gray', strokeWidth: 0}}
             tickFormatter={DataFormatter}
+            height={6000}
           />
           <Legend wrapperStyle={{padding: 30}} />
-          <Bar dataKey="dose1" name="dose 1" fill="#1f77b4" barSize="20%" />
-          <Bar dataKey="dose2" name="dose 1" fill="#1f77b4" barSize="20%" />
+          <Bar dataKey="dose1" name="dose 1" fill="#5a8dee" />
+          <Bar dataKey="dose2" name="dose 2" fill="#f54394" />
         </BarChart>
       </ResponsiveContainer>
     </div>
