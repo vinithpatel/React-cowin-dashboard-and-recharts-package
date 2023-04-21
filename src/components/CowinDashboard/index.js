@@ -2,6 +2,8 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
 import VaccinationCoverage from '../VaccinationCoverage'
+import VaccinationByGender from '../VaccinationByGender'
+import VaccinationByAge from '../VaccinationByAge'
 import './index.css'
 
 const apiStatusConstants = {
@@ -39,8 +41,8 @@ class CowinDashboard extends Component {
         last7DaysVaccination: this.getFormatedData(
           data.last_7_days_vaccination,
         ),
-        vaccinaionByAge: data.vaccinaion_by_age,
-        vaccinationByGender: data.vaccinaion_by_gender,
+        vaccinationByAge: data.vaccinaion_by_age,
+        vaccinationByGender: data.vaccination_by_gender,
       }
       this.setState({apiStatus: apiStatusConstants.success, data: formatData})
     }
@@ -54,23 +56,23 @@ class CowinDashboard extends Component {
 
   renderCharts = () => {
     const {data} = this.state
-    const {last7DaysVaccination} = data
+    const {last7DaysVaccination, vaccinationByGendere} = data
 
     return (
       <div className="charts-container">
         <VaccinationCoverage last7DaysVaccination={last7DaysVaccination} />
-      </div>
-    )
-  }
+        <VaccinationByGender vaccinationByGender={vaccinationByGender} />
+        }
 
-  renderResources = () => {
-    const {apiStatus} = this.state
+  r
+
     switch (apiStatus) {
-      case apiStatusConstants.inProgress:
-        return this.renderLoader()
+      case apiStatusConstants.inPr
+ogress:
+    switch urn this.renderLoader()
       case apiStatusConstants.success:
-        return this.renderCharts()
-      default:
+         return this.renderCharts()
+      caseult:
         return null
     }
   }

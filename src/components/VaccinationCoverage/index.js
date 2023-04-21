@@ -11,11 +11,7 @@ import './index.css'
 
 const VaccinationCoverage = props => {
   const {last7DaysVaccination} = props
-
-  const DataFormatter = number => {
-    console.log(number)
-    return number
-  }
+  console.log(last7DaysVaccination)
 
   return (
     <div className="chart-bg-container">
@@ -26,14 +22,20 @@ const VaccinationCoverage = props => {
             dataKey="vaccineDate"
             tick={{stroke: 'gray', strokeWidth: 1}}
           />
-          <YAxis
-            tick={{stroke: 'gray', strokeWidth: 0}}
-            tickFormatter={DataFormatter}
-            height={6000}
-          />
+          <YAxis tick={{stroke: 'gray', strokeWidth: 0}} dataForma />
           <Legend wrapperStyle={{padding: 30}} />
-          <Bar dataKey="dose1" name="dose 1" fill="#5a8dee" />
-          <Bar dataKey="dose2" name="dose 2" fill="#f54394" />
+          <Bar
+            dataKey="dose1"
+            name="Dose 1"
+            fill="#5a8dee"
+            radius={[10, 10, 0, 0]}
+          />
+          <Bar
+            dataKey="dose2"
+            name="Dose 2"
+            fill="#f54394"
+            radius={[10, 10, 0, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>
