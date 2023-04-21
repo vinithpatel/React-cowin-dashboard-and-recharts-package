@@ -41,38 +41,56 @@ class CowinDashboard extends Component {
         last7DaysVaccination: this.getFormatedData(
           data.last_7_days_vaccination,
         ),
-        vaccinationByAge: data.vaccinaion_by_age,
+        vaccinationByAge: data.vaccination_by_age,
         vaccinationByGender: data.vaccination_by_gender,
       }
       this.setState({apiStatus: apiStatusConstants.success, data: formatData})
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
 
   renderLoader = () => (
-    <div data-testId="loader">
+    <div data-testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height={80} width={80} />
+    </div>
+  )
+
+  renderFailureView = () => (
+    <div className="failure-view-bg-container">
+      <img
+        className="failure-image"
+        src="https://assets.ccbp.in/frontend/react-js/api-failure-view.png"
+        alt="failure view"
+      />
+      <h1 className="failure-heading">Something went wrong</h1>
     </div>
   )
 
   renderCharts = () => {
     const {data} = this.state
-    const {last7DaysVaccination, vaccinationByGendere} = data
+    const {last7DaysVaccination, vaccinationByGender, vaccinationByAge} = data
+    console.log(vaccinationByAge)
 
     return (
       <div className="charts-container">
         <VaccinationCoverage last7DaysVaccination={last7DaysVaccination} />
         <VaccinationByGender vaccinationByGender={vaccinationByGender} />
-        }
+        <VaccinationByAge vaccinationByAge={vaccinationByAge} />
+      </div>
+    )
+  }
 
-  r
-
+  renderResources = () => {
+    const {apiStatus} = this.state
     switch (apiStatus) {
-      case apiStatusConstants.inPr
-ogress:
-    switch urn this.renderLoader()
+      case apiStatusConstants.inProgress:
+        return this.renderLoader()
       case apiStatusConstants.success:
-         return this.renderCharts()
-      caseult:
+        return this.renderCharts()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
+      default:
         return null
     }
   }
@@ -88,7 +106,7 @@ ogress:
           />
           <h1 className="website-heading">Co-WIN</h1>
         </div>
-        <p className="logo-para">CoWIN Vaccination in India</p>
+        <h1 className="logo-para">CoWIN Vaccination in India</h1>
         <div className="body-container">{this.renderResources()}</div>
       </div>
     )
